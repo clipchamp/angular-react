@@ -212,12 +212,7 @@ export abstract class ReactWrapperComponent<TProps extends {}> implements AfterC
     hostAttributes.forEach(attr => {
       const [forbidden, alternativeAttrName] = this._isForbiddenAttribute(attr);
       if (forbidden) {
-        throw new Error(
-          `[${(this.elementRef
-            .nativeElement as HTMLElement).tagName.toLowerCase()}] React wrapper components cannot have the '${
-            attr.name
-          }' attribute set. Use the following alternative: ${alternativeAttrName || ''}`
-        );
+        console.warn(`Ignoring ${attr.name} on wrapped component`)
       }
     });
 
